@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Playlists</title>
+</head>
+
+<body>
+
+<h1>Spotify Playlists</h1>
+
+{% for playlist in playlists %}
+
+<p>
+    {{ playlist.name }}
+</p>
+
+{% empty %}
+
+<p>No playlists available.</p>
+
+{% endfor %}
+
+</body>
+
+</html>

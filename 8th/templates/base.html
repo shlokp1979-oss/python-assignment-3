@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MusicZone</title>
+</head>
+
+<body>
+
+<nav style="padding: 15px; background-color: black;">
+
+    <a href="/" style="color: white; margin-right: 20px;">
+        MusicZone
+    </a>
+
+    {% if user.is_authenticated %}
+
+        <span style="color: white; margin-right: 20px;">
+            Welcome, {{ user.username }}
+        </span>
+
+        <form method="POST" action="{% url 'logout' %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit">
+                Logout
+            </button>
+        </form>
+
+    {% else %}
+
+        <a href="{% url 'login' %}" style="color: white; margin-right: 20px;">
+            Login
+        </a>
+
+        <a href="{% url 'signup' %}" style="color: white;">
+            Signup
+        </a>
+
+    {% endif %}
+
+</nav>
+
+
+<div style="padding: 30px;">
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+</body>
+
+</html>

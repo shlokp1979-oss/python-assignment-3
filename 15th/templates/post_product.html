@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Post Product</title>
+</head>
+
+<body>
+
+<h1>Post Product</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <input
+        type="text"
+        name="name"
+        placeholder="Product name"
+    >
+
+    <br><br>
+
+    <input
+        type="number"
+        name="price"
+        placeholder="Price"
+    >
+
+    <br><br>
+
+    <button type="submit">
+        Post Product
+    </button>
+
+</form>
+
+</body>
+
+</html>

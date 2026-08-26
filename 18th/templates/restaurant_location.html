@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Location</title>
+</head>
+
+<body>
+
+<h1>Restaurant Location</h1>
+
+<form method="GET">
+
+    <input
+        type="text"
+        name="address"
+        placeholder="Enter restaurant address"
+        value="{{ address }}"
+        required
+    >
+
+    <button type="submit">
+        Show Location
+    </button>
+
+</form>
+
+<br>
+
+<h3>{{ address }}</h3>
+
+<iframe
+    width="600"
+    height="450"
+    style="border:0"
+    loading="lazy"
+    allowfullscreen
+    src="https://www.google.com/maps?q={{ address|urlencode }}&output=embed">
+</iframe>
+
+</body>
+</html>

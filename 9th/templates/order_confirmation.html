@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Confirmation</title>
+</head>
+
+<body style="font-family: Arial, sans-serif;">
+
+    <h1>Order Confirmed! 🎉</h1>
+
+    <p>Hello {{ user_name }},</p>
+
+    <p>
+        Your food order has been successfully placed.
+    </p>
+
+    <h3>Order Details</h3>
+
+    <p><strong>Restaurant:</strong> {{ restaurant }}</p>
+    <p><strong>Item:</strong> {{ item }}</p>
+    <p><strong>Quantity:</strong> {{ quantity }}</p>
+    <p><strong>Total Amount:</strong> ₹{{ amount }}</p>
+
+    <p>
+        Thank you for ordering with us!
+    </p>
+
+</body>
+</html>

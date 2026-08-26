@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Search</title>
+</head>
+
+<body>
+
+<h2>Restaurant Search</h2>
+
+<form method="GET">
+
+    <input
+        type="text"
+        name="cuisine"
+        placeholder="Enter cuisine"
+    >
+
+    <input
+        type="text"
+        name="location"
+        placeholder="Enter location"
+    >
+
+    <button type="submit">
+        Search
+    </button>
+
+</form>
+
+<hr>
+
+{% for restaurant in restaurants %}
+
+    <h3>{{ restaurant.name }}</h3>
+
+    <p>Cuisine: {{ restaurant.cuisine }}</p>
+
+    <p>Location: {{ restaurant.location }}</p>
+
+    <hr>
+
+{% empty %}
+
+    <p>No restaurants found.</p>
+
+{% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AJAX Delete Demo</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        .item {
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            width: 400px;
+        }
+
+        button {
+            margin-left: 20px;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        #message {
+            margin: 20px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>AJAX Delete Demo</h1>
+
+    <div id="message"></div>
+
+    <h2>Spotify Playlist</h2>
+
+    <div class="item">
+        <span>Song 1 - Believer</span>
+        <button onclick="deleteItem(this, 1)">
+            Delete
+        </button>
+    </div>
+
+    <div class="item">
+        <span>Song 2 - Shape of You</span>
+        <button onclick="deleteItem(this, 2)">
+            Delete
+        </button>
+    </div>
+
+    <div class="item">
+        <span>Song 3 - Perfect</span>
+        <button onclick="deleteItem(this, 3)">
+            Delete
+        </button>
+    </div>
+
+
+    <h2>Flipkart Wishlist</h2>
+
+    <div class="item">
+        <span>iPhone 15 - ₹70000</span>
+        <button onclick="deleteItem(this, 4)">
+            Remove from Wishlist
+        </button>
+    </div>
+
+    <div class="item">
+        <span>HP Laptop - ₹55000</span>
+        <button onclick="deleteItem(this, 5)">
+            Remove from Wishlist
+        </button>
+    </div>
+
+
+    <h2>BookMyShow Watch Later</h2>
+
+    <div class="item">
+        <span>Movie: Avengers</span>
+        <button onclick="deleteItem(this, 6)">
+            Delete
+        </button>
+    </div>
+
+    <div class="item">
+        <span>Movie: Avatar</span>
+        <button onclick="deleteItem(this, 7)">
+            Delete
+        </button>
+    </div>
+
+
+    <script>
+
+        function deleteItem(button, id) {
+
+            fetch(`/delete/${id}/`, {
+                method: 'DELETE'
+            })
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                if (data.success) {
+
+                    // Remove item from UI
+                    const item = button.closest('.item');
+
+                    item.remove();
+
+                    // Success message
+                    document.getElementById('message').innerText =
+                        data.message;
+
+                }
+
+            })
+
+            .catch(error => {
+
+                console.error(error);
+
+                document.getElementById('message').innerText =
+                    'Something went wrong!';
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Profile</title>
+</head>
+
+<body>
+
+<h2>My Profile</h2>
+
+{% if profile.profile_picture %}
+
+    <img
+        src="{{ profile.profile_picture.url }}"
+        width="120"
+        height="120"
+    >
+
+{% endif %}
+
+<form method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    <p>
+        Name:
+        <input
+            type="text"
+            name="name"
+            value="{{ user.first_name }}"
+        >
+    </p>
+
+    <p>
+        Email:
+        <input
+            type="email"
+            name="email"
+            value="{{ user.email }}"
+        >
+    </p>
+
+    <p>
+        Address:
+        <input
+            type="text"
+            name="address"
+            value="{{ profile.address }}"
+        >
+    </p>
+
+    <p>
+        Profile Picture:
+        <input
+            type="file"
+            name="profile_picture"
+        >
+    </p>
+
+    <button type="submit">
+        Update Profile
+    </button>
+
+</form>
+
+<hr>
+
+<h3>Profile Details</h3>
+
+<p>Name: {{ user.first_name }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Address: {{ profile.address }}</p>
+
+</body>
+
+</html>
